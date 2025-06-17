@@ -35,13 +35,17 @@ becomes C. To change a message back, each letter is replaced by the one three be
 int main() {
     char plain[100], cipher[100];
     int key, i, length;
+
     printf("\nEnter the plain text: ");
-    scanf("%99s", plain); // Limiting input to prevent buffer overflow
+    scanf("%99s", plain);
+
     printf("\nEnter the key value: ");
     scanf("%d", &key);
+
     length = strlen(plain);
     printf("\n\n\tPLAIN TEXT: %s", plain);
     printf("\n\n\tENCRYPTED TEXT: ");
+
     for (i = 0; i < length; i++) {
         cipher[i] = plain[i] + key;
         if (isupper(plain[i]) && cipher[i] > 'Z') {
@@ -53,10 +57,12 @@ int main() {
 
         printf("%c", cipher[i]);
     }
+
     cipher[length] = '\0'; 
     printf("\n\n\tAFTER DECRYPTION: ");
     for (i = 0; i < length; i++) {
         plain[i] = cipher[i] - key;
+
         if (isupper(cipher[i]) && plain[i] < 'A') {
             plain[i] += 26;
         }
